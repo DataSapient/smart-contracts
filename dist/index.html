@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>HELL Labs - Demo</title>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/app.js"></script>
+  </head>
+  <body class="container">
+    <h3>HELL Labs - Usage Example</h3>
+
+    <ul class="nav nav-tabs" role="tablist" id="myTabs">
+      <li role="presentation" class="active"><a href="#blockchain" aria-controls="blockchain" role="tab" data-toggle="tab">Blockchain</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="blockchain">
+        <h3> 1. Set the value in the blockchain</h3>
+        <div class="form-group form-inline">
+          <input type="text" class="text form-control" value="10">
+          <button class="set btn btn-primary">Set Value</button>
+          <p>Once you set the value, the transaction will need to be mined and then the value will be updated on the blockchain.</p>
+        </div>
+
+        <h3> 2. Get the current value</h3>
+        <div class="form-group">
+          <div>
+            current value is <span class="value"></span>
+          </div>
+          <button class="get btn btn-primary">Get Value</button>
+          <p>Click the button to get the current value. The initial value is 100.</p>
+        </div>
+
+        <h3> 3. Contract Calls </h3>
+        <p>Javascript calls being made: </p>
+        <div class="logs">
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,58 @@
+pragma solidity ^0.4.7;
+contract TheDeal{
+  uint public contNums;
+  uint public contID;
+  struct theContract{
+    address creator;
+    uint contractNo;
+    uint tenure;
+    uint starting;
+    uint nop;
+    bool valid;
+    address author;
+  }
+  /*mapping (uint=>theContract) public contracts;
+  mapping (address=>uint256) public balanceOf;*/
+  event conCreated(bool indexed done, uint indexed contID);
+  event moneySent(bool indexed sent, uint indexed contID);
+
+  function newContract(uint _cno,
+    uint _tenure, uint _start, uint _nop,
+    bool _valid){
+      contID = contNums++;
+      theContract storage c = contracts[0];
+      c.contractNo = _cno;
+      c.tenure = _tenure;
+      c.starting = _start;
+      c.nop = _nop;
+      c.valid = _valid;
+      c.author = msg.sender;
+      /*conCreated(true, contID);*/
+    }
+
+  /*function newContract(uint _cno,
+    uint _tenure, uint _start, uint _nop,
+    bool _valid){
+      contID = contNums++;
+      theContract storage c = contracts[0];
+      c.contractNo = _cno;
+      c.tenure = _tenure;
+      c.starting = _start;
+      c.nop = _nop;
+      c.valid = _valid;
+      c.author = msg.sender;
+      conCreated(true, contID);
+    }*/
+
+  function sendMoney(uint contID, uint amount, address spr){
+    theContract storage c = contracts[contID];
+    balanceOf[c.author] -= amount;
+    balanceOf[spr] += amount;
+    /*moneySent(true, contID);*/
+  }
+  function testget(uint contID) constant returns (uint val){
+    theContract storage c = contracts[contID];
+    return c.tenure;
+  }
+
+}
